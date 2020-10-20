@@ -1,0 +1,31 @@
+<h1> User Show </h1>
+<%= @user.username%>
+
+<ul>
+<% @user.subs.each do |sub| %>
+    <li>
+    <a href="<%= sub_url(sub) %>"> <%= sub.title %> </a>
+    </li>
+<% end %>
+</ul>
+
+<ul>
+<% @user.posts.each do |post| %>
+    <li>
+    <a href="<%= post_url(post) %>"> <%= post.title %> </a>
+    </li>
+<% end %>
+</ul>
+
+
+<h1> Create a sub </h1> 
+<form action="<%= subs_url %>" method="POST">
+<input type = "hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>">
+    <label> Title 
+    <input type="text" name="sub[title]"  >
+    <label>
+    <label> Description
+    <input type="text" name="sub[description]"  >
+    <label>
+    <input type="submit" value="Create Sub" >
+</form>

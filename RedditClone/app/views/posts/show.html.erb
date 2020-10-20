@@ -1,0 +1,18 @@
+<h1><%= @post.title %></h1>
+
+<h2> Content </h2>
+<p> <%= @post.content %> </p>
+
+
+<a href="<%= @post.url %>"> <%= @post.url %> </a>
+
+<% @post.crossposts.each do |crosspost| %>
+    <p> Subreddit: <%= crosspost.sub.title %> </p>
+<% end %>
+
+<form action = "<%= edit_post_url(@post)%>" method = "POST">
+<input type = "hidden" name = "_method" value = "GET">
+<input type = "hidden" name = "authenticity_token" value = "<%= form_authenticity_token%>">
+
+<button>Edit This Post</button>
+</form>
